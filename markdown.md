@@ -1,0 +1,20 @@
+          <svg width="1600" height="900" xmlns="http://www.w3.org/2000/svg">
+            <circle
+              class="fragment"
+              cx="50"
+              cy="50"
+              r="40"
+              stroke="green"
+              stroke-width="4"
+              fill="yellow"
+            />
+            <circle
+              class="fragment"
+              cx="100"
+              cy="50"
+              r="40"
+              stroke="red"
+              stroke-width="4"
+              fill="blue"
+            />
+          </svg>

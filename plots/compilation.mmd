@@ -1,0 +1,7 @@
+flowchart TD
+    Python --> Bytecodes
+    Bytecodes --> Specializer
+    Specializer --> Bytecodes
+    Specializer --> micro[Micro opcodes]
+    micro --> Optimizer
+    Optimizer --> machine[Machine code]

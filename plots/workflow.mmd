@@ -1,0 +1,6 @@
+flowchart LR
+    Ideas --> PR[Pull request]
+    PR[Pull request] --> Benchmarks
+    Benchmarks --> faster{Is it faster?}
+    faster-- Yes --- Merge
+    faster-- No --- dont[Don't merge]

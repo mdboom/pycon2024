@@ -1,0 +1,25 @@
+flowchart TB
+  subgraph aa[A/A testing]
+  CPython3[CPython] <--> CPython3
+  end
+
+  subgraph development
+  main[CPython main] <--> PR[Pull Request]
+  end
+
+  subgraph implementations
+  CPython <--> GraalPy
+  CPython <--> PyPy
+  CPython <--> Cinder
+  CPython <--> Pyjion
+  CPython <--> Pyston
+  end
+
+  subgraph languages
+  CPython2[CPython] <--> Java
+  CPython2 <--> C
+  CPython2 <--> Go
+  Java <--> C
+  Go <--> Java
+  Go <--> C
+  end

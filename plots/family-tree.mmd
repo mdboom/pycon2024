@@ -1,0 +1,20 @@
+flowchart LR
+    Game[Debian Benchmarks Game] --> US[Unladen Swallow]
+    MathWorld --> Game
+    richards[Martin Richards] --> US
+    US --> pyperformance
+    PyPy --> pyperformance
+    dask --> pyperformance
+    Pyston --> python-macrobenchmarks
+    python-macrobenchmarks -.-> pyperformance
+    V8 --> PyPy
+    raytrace[raytrace.py] --> pyperformance
+    scimark[NIST SciMark] --> US
+    sympy --> pyperformance
+    telco --> US
+    faster[Faster CPython] --> pyperformance
+
+    style faster fill:#fdd
+    style PyPy fill:#fdd
+    style US fill:#fdd
+    style Pyston fill:#fdd

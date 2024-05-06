@@ -2,8 +2,8 @@
  * Solarized Light theme for reveal.js.
  * Author: Achim Staebler
  */
-@import url(./fonts/league-gothic/league-gothic.css);
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+
 /**
  * Solarized colors by Ethan Schoonover
  */
@@ -19,19 +19,18 @@ html * {
   --r-background-color: #fdf6e3;
   --r-main-font: Lato, sans-serif;
   --r-main-font-size: 40px;
-  --r-main-color: #657b83;
+  --r-main-color: #555555;
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
-  --r-heading-font: League Gothic, Impact, sans-serif;
-  --r-heading-color: #586e75;
+  --r-heading-font: Taviraj, serif;
+  --r-heading-color: #333333;
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
-  --r-heading-text-transform: uppercase;
-  --r-heading-text-shadow: none;
-  --r-heading-font-weight: normal;
-  --r-heading1-text-shadow: none;
+  --r-heading-text-transform: normal;
+  --r-heading-text-shadow: 6px 6px 32px #aaaaaa;
+  --r-heading-font-weight: 500;
   --r-heading1-size: 3.77em;
-  --r-heading2-size: 2.11em;
+  --r-heading2-size: 1.9em;
   --r-heading3-size: 1.55em;
   --r-heading4-size: 1em;
   --r-code-font: monospace;
@@ -52,7 +51,7 @@ html * {
 .reveal {
   font-family: var(--r-main-font);
   font-size: var(--r-main-font-size);
-  font-weight: normal;
+  font-weight: 300;
   color: var(--r-main-color);
 }
 
@@ -102,16 +101,16 @@ html * {
   font-size: var(--r-heading2-size);
 }
 
+.reveal h2 i {
+  font-style: italic;
+}
+
 .reveal h3 {
   font-size: var(--r-heading3-size);
 }
 
 .reveal h4 {
   font-size: var(--r-heading4-size);
-}
-
-.reveal h1 {
-  text-shadow: var(--r-heading1-text-shadow);
 }
 
 /*********************************************
@@ -261,13 +260,13 @@ html * {
   border-bottom: 1px solid;
 }
 
-.reveal table th[align=center],
-.reveal table td[align=center] {
+.reveal table th[align="center"],
+.reveal table td[align="center"] {
   text-align: center;
 }
 
-.reveal table th[align=right],
-.reveal table td[align=right] {
+.reveal table th[align="right"],
+.reveal table td[align="right"] {
   text-align: right;
 }
 
@@ -360,4 +359,32 @@ html * {
   .backgrounds {
     background-color: var(--r-background-color);
   }
+}
+
+.apps header:after {
+  content: "Application benchmarks";
+}
+
+.modified header:after {
+  content: "Modified application benchmarks";
+}
+
+.kernels header:after {
+  content: "Kernel benchmarks";
+}
+
+.synthetic header:after {
+  content: "Synthetic benchmarks";
+}
+
+.toy header:after {
+  content: "Toy benchmarks";
+}
+
+.micro header:after {
+  content: "Microbenchmarks";
+}
+
+.noise header:after {
+  content: "Sources of noise";
 }

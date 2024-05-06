@@ -275,6 +275,7 @@ gulp.task('package', gulp.series(() =>
             './lib/**',
             './images/**',
             './plugin/**',
+            './plots/*.svg',
             './**/*.md'
         ],
         { base: './' }
@@ -299,6 +300,7 @@ gulp.task('serve', () => {
     gulp.watch([
         slidesRoot + '**/*.html',
         slidesRoot + '**/*.md',
+        slidesRoot + '**/*.svg',
         `!${slidesRoot}**/node_modules/**`, // ignore node_modules
     ], gulp.series('reload'))
 

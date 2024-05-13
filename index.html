@@ -37,6 +37,7 @@
           <p>
             <small>Microsoft<br />PyCon, May 18, 2024</small>
           </p>
+          <img src="plots/Microsoft_logo.svg" width="64px" height="64px" />
         </section>
         <section>
           <h2>
@@ -78,7 +79,7 @@ def mandel(x, y, max_iters):
           <img class="r-stretch" src="plots/compilation.svg" />
         </section>
         <section>
-          <h2>This is not that talk.</h2>
+          <h2>This is not <em>that</em> talk.</h2>
         </section>
         <section data-auto-animate>
           <h2>
@@ -346,12 +347,12 @@ id_to_derived = {
               <td><b>Toy / Micro</b></td>
             </tr>
             <tr>
-              <td>By <em>how much</em> did things get faster?</td>
-              <td><em>Why</em> did things get faster?</td>
+              <td><em>How much?</em></td>
+              <td><em>Why?</em></td>
             </tr>
             <tr>
-              <td>Harder to inspect and maintain.</td>
-              <td>Easier to inspect and maintain.</td>
+              <td>Ongoing maintenance</td>
+              <td>High longevity</td>
             </tr>
           </table>
         </section>
@@ -377,14 +378,15 @@ id_to_derived = {
             If you care about a particular workload going faster, please donate
             some benchmarks
           </h3>
-          <h4>(Make a PR to pyperformance)</h4>
+          (Make a PR to pyperformance,<br />
+          or the benchmarks can live in your own repo)
         </section>
         <section>
           <h1>Part II:</h1>
           <h2>Building a better stopwatch</h2>
         </section>
         <section>
-          <img src="plots/benchmarking.svg" />
+          <img class="r-stretch" src="plots/benchmarking.svg" />
         </section>
         <section>
           <h2>A/A testing</h2>
@@ -392,9 +394,15 @@ id_to_derived = {
             <li class="fragment">Average noise: ± 1.0%</li>
             <li class="fragment">Most performance improvements are < 1.0%</li>
           </ul>
+          <p></p>
+          <ol>
+            <li class="fragment">Reduce noise as much as possible</li>
+            <li class="fragment">Use additional signals where possible</li>
+            <li class="fragment">Use statistical methods</li>
+          </ol>
         </section>
         <section data-state="noise">
-          <h3>“Other things” happening on the system</h3>
+          <h3>“Other things” happening</h3>
           <ul>
             <li class="fragment">Multi-tasking by the OS</li>
             <ul>
@@ -403,9 +411,7 @@ id_to_derived = {
             </ul>
             <li class="fragment">Virtual machines</li>
             <ul>
-              <li class="fragment">
-                Typical cloud-computing environments introduce too much noise
-              </li>
+              <li class="fragment">Use bare-metal</li>
             </ul>
           </ul>
         </section>
@@ -445,15 +451,54 @@ id_to_derived = {
           </ul>
         </section>
         <section>
-          <h2>Using statistics to account for noise</h2>
+          <h2>pyperf</h2>
+          <h2>pyperformance</h2>
+        </section>
+        <section>
+          <h2>Statistics</h2>
+          <ul>
+            <li>Geometric mean</li>
+            <ul>
+              <li>
+                For each benchmark, compute the mean of the percentage change
+              </li>
+              <!-- \[ \frac{1}{\vert A \vert \vert B \vert} \sum_{a \in A, b \in
+              B}^{} \frac{a}{b} \] -->
+              <li>
+                Multiply those means together and take the <em>n</em
+                ><sup>th</sup> root, where <em>n</em> is the number of
+                benchmarks.
+              </li>
+              \[ \sqrt[n]{a_1 a_2 \cdots a_n} \]
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Statistics</h2>
+          <ul>
+            <li>Weighted mean</li>
+            <ul>
+              <li>Each benchmark is given a different weight</li>
+              \[ \frac{(a_1 w_1) + (a_2 w_2) + \cdots (a_n w_n)}{n} \]
+              <li>
+                Ideally, select weights based on what goes into a typical
+                workload
+              </li>
+              <li>But it's easier to just add more application benchmarks</li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Statistics</h2>
           <ul>
             <li>Hierarchical performance testing (HPT)</li>
             <ul>
               <li>Used in SPEC benchmarking suite.</li>
               <li>
                 Only include results in the overall average when they are X%
-                more likely to be different than the the null hypothesis.
+                likely to be different from the null hypothesis.
               </li>
+              <li>Only includes benchmarks that are “meaningful”.</li>
               <li>
                 “The system measured by the benchmarks is 90% likely to be 1%
                 faster.”
@@ -478,7 +523,13 @@ id_to_derived = {
           <img src="plots/action-runner.png" class="r-stretch" />
         </section>
         <section>
-          <h3>CB vs. CI</h3>
+          github.com/faster-cpython/benchmarking-public
+          <img src="plots/benchmarking-public-screenshot.png" />
+        </section>
+        <section>
+          <img src="plots/longitudinal.png" />
+        </section>
+        <section>
           <table style="border: 1px solid black">
             <tr>
               <td></td>
@@ -527,6 +578,7 @@ id_to_derived = {
     <script src="plugin/notes/notes.js"></script>
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
     <script>
       // More info about initialization & config:
       // - https://revealjs.com/initialization/
@@ -535,7 +587,12 @@ id_to_derived = {
         hash: true,
 
         // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealNotes,
+          RevealMath.KaTeX,
+        ],
 
         markdown: {
           smartypants: true,

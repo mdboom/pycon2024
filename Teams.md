@@ -99,7 +99,7 @@ inkscape:current-layer="layer1" />
 <g
        id="g10" class="fragment">
 <rect
-         style="fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none"
+         style="fill:none;stroke:#888888;stroke-width:2;stroke-dasharray:none;z-index:-1"
          id="rect4"
          width="387.92792"
          height="271.85355"
